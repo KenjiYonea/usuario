@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+// Essa classe converte usuario para usuarioDTO
 @Component
 public class UsuarioConverter {
 
@@ -32,6 +33,7 @@ public class UsuarioConverter {
         return enderecos;
     }
 
+    //Retorna um endereço
     public Endereco paraEndereco(EnderecoDTO enderecoDTO){
         return Endereco.builder()
                 .rua(enderecoDTO.getRua())

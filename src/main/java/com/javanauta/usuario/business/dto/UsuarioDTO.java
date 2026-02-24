@@ -11,6 +11,7 @@ import java.util.List;
 @Builder
 public class UsuarioDTO {
 
+    //DTO significa Data Transfer Object (Objeto de Transferência de Dados).
     private String nome;
     private String email;
     private String senha;
