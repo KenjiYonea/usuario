@@ -55,5 +55,11 @@ public class UsuarioController {
                 () -> new ResourceNotFoundException("Email nao encontrado" + email));
     }
 
+    @PutMapping
+    public ResponseEntity<UsuarioDTO>atualizaDadoUsuario(@RequestBody UsuarioDTO dto,
+                                                        @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token,dto));
+    }
+
 
 }
