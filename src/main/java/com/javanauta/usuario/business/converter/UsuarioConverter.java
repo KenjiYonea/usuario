@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-// Essa classe converte usuario para usuarioDTO
+// Classe responsável por converter objetos entre DTOs e Entities
 @Component
 public class UsuarioConverter {
 
@@ -118,7 +118,6 @@ public class UsuarioConverter {
                 .complemento(dto.getComplemento() != null ? dto.getComplemento() : entity.getComplemento())
                 .estado(dto.getEstado() != null ? dto.getEstado() : entity.getEstado())
                 .build();
-
       }
 
       public Telefone updateTelefone(TelefoneDTO dto, Telefone entity){
@@ -126,6 +125,26 @@ public class UsuarioConverter {
                 .id(entity.getId())
                 .ddd(dto.getDdd() != null ? dto.getDdd() : entity.getDdd())
                 .numero(dto.getNumero() != null ? dto.getNumero() : entity.getNumero())
+                .build();
+      }
+
+      public Endereco paraEnderecoEntity (EnderecoDTO dto, Long idUsuario){
+        return Endereco.builder()
+                .rua(dto.getRua())
+                .cidade(dto.getCidade())
+                .cep(dto.getCep())
+                .complemento(dto.getComplemento())
+                .estado(dto.getEstado())
+                .numero(dto.getNumero())
+                .usuario_id(idUsuario)
+                .build();
+      }
+
+      public Telefone paraTelefoneEntity (TelefoneDTO dto, Long idUsuario){
+        return Telefone.builder()
+                .numero(dto.getNumero())
+                .ddd(dto.getDdd())
+                .usuario_id(idUsuario)
                 .build();
       }
 
